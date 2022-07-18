@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link rel="stylesheet"  type ="text/css" href="{% static '..//static/semantic-ui/semantic.css' %}">
+</head>
+<body>
+    <div class="ui container">
+        <div class="ui secondary menu"> 
+        
+            <a class="item" href="{% url 'index' %}">Brand</a>
+            <a class="item" href="{% url 'admin:index' %}">admin</a>
+            <a class="item" href="{% url 'other' %}">other</a>
+            <a class="item" href="{% url 'my1app:registration' %}">Sign up</a>
+
+            {% if user.is_autenticated %}
+            <a class="item" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a class="item" href="{% url 'my1app:user_login' %}">Login</a>
+            {% endif %}
+
+
+         </div>
+         
+         <div class="ui container">
+            {% block body_block %}
+            <!-- nothing here -->
+            {% endblock %}
+         </div>
+
+    </div>
+    
+</body>
+</html>
